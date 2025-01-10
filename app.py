@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Cargar el modelo y el scaler
 model = joblib.load('models/Bkm-creditRisk.joblib')
@@ -20,5 +20,5 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 
-if _name_ == '_main_':
+if __name__ == '_main_':
     app.run(host='0.0.0.0', port=5000)
